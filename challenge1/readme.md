@@ -5,4 +5,4 @@ Load Balancer --> MIG --> VM --> DB
 
 I have just tried to show approach to write code creatig MIG and template for creating multi network VM ( 2 networks ). Sothat DNS can be connect to 1 network and DB can be connected to another network to avoid direct access of external user to DB. 
 
-Code of CloudSQL DB creation and connection with VM can also be added
+Code of CloudSQL DB creation and connection with VM can also be added and then routing can be set to use DB from VM. (code is not added here).
