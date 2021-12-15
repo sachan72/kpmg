@@ -1,0 +1,18 @@
+## This code is for retrieving metadata from GCP VM via loop and then based on retrieved values, we can use them. Applied a loop sothat all the variable values can be obtained which are starting from VAR:
+
+
+for custom_key in $(curl "http://metadata.google.internal/computeMetadata/v1/instance/attributes/" -H "Metadata-Flavor: Google");
+do
+  if [[ "${custom_key} == "VAR"* ]]; then
+    custom_value=$(curl "http://metadata.google.internal/computeMetadata/v1/instance/attributes/${custom_key}" -H "Metadata-Flavor: Google")
+    export "${custom_key}=${custom_value}"
+  fi
+  
+### List of required variables obtained from instance metadata and value
+echo "List of output values"
+echo "VAR_project_id" : ${VAR_project_id}"
+echo "VAR_init_script" : ${VAR_init_script}"
+echo "VAR_gcs_bucket" : ${VAR_gcs_bucket}"
+echo "VAR_dns_name" : ${VAR_dns_name}"
+echo "VAR_network_ip" : ${VAR_network_ip}"
+
